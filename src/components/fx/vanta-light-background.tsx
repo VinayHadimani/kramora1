@@ -127,7 +127,18 @@ export function VantaLightBackground({
   }, [variant]);
 
   return (
-    <div ref={hostRef} aria-hidden="true" className={cn("absolute inset-0 overflow-hidden", className)}>
+    // pointer-events-none: this is a purely decorative layer — it must never
+    // intercept clicks. (Vanta attaches its own mouse/touch listeners to
+    // `window`, so the interactive parallax keeps working.)
+    // isolate: creates a stacking context so Vanta's runtime styling (it sets
+    // `position: relative` + `z-index: 1` on every pre-existing child of the
+    // host — i.e. our gradient fallback) stays contained BELOW the section
+    // content instead of painting over it.
+    <div
+      ref={hostRef}
+      aria-hidden="true"
+      className={cn("pointer-events-none absolute inset-0 isolate overflow-hidden", className)}
+    >
       <div className={cn("absolute inset-0", FALLBACK_GRADIENT)} />
     </div>
   );
