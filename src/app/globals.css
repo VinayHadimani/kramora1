@@ -1,0 +1,282 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Strict light theme — White / Slate / Blue (#2563eb) */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(224 71.4% 4.1%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(224 71.4% 4.1%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(224 71.4% 4.1%);
+  --primary: hsl(221.2 83.2% 53.3%);
+  --primary-foreground: hsl(210 20% 98%);
+  --secondary: hsl(210 40% 96.1%);
+  --secondary-foreground: hsl(224 71.4% 4.1%);
+  --muted: hsl(210 40% 96.1%);
+  --muted-foreground: hsl(215.4 16.3% 46.9%);
+  --accent: hsl(214.3 31.8% 95.1%);
+  --accent-foreground: hsl(224 71.4% 4.1%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(214.3 31.8% 91.4%);
+  --input: hsl(214.3 31.8% 91.4%);
+  --ring: hsl(221.2 83.2% 53.3%);
+  --chart-1: hsl(221.2 83.2% 53.3%);
+  --chart-2: hsl(238.7 83.5% 66.7%);
+  --chart-3: hsl(199.4 95.5% 53.9%);
+  --chart-4: hsl(243.4 75.4% 58.6%);
+  --chart-5: hsl(215.4 16.3% 46.9%);
+  --sidebar: hsl(210 40% 98%);
+  --sidebar-foreground: hsl(224 71.4% 4.1%);
+  --sidebar-primary: hsl(221.2 83.2% 53.3%);
+  --sidebar-primary-foreground: hsl(210 20% 98%);
+  --sidebar-accent: hsl(210 40% 96.1%);
+  --sidebar-accent-foreground: hsl(224 71.4% 4.1%);
+  --sidebar-border: hsl(214.3 31.8% 91.4%);
+  --sidebar-ring: hsl(221.2 83.2% 53.3%);
+}
+
+/*
+  Dark theme intentionally unused — Kramora AI ships a strict light-mode design system.
+  The block is kept only so shadcn components that reference .dark never break.
+*/
+.dark {
+  --background: hsl(224 71.4% 4.1%);
+  --foreground: hsl(210 20% 98%);
+  --card: hsl(224 71.4% 4.1%);
+  --card-foreground: hsl(210 20% 98%);
+  --popover: hsl(224 71.4% 4.1%);
+  --popover-foreground: hsl(210 20% 98%);
+  --primary: hsl(217.2 91.2% 59.8%);
+  --primary-foreground: hsl(224 71.4% 4.1%);
+  --secondary: hsl(215 27.9% 16.9%);
+  --secondary-foreground: hsl(210 20% 98%);
+  --muted: hsl(215 27.9% 16.9%);
+  --muted-foreground: hsl(217.9 10.6% 64.9%);
+  --accent: hsl(215 27.9% 16.9%);
+  --accent-foreground: hsl(210 20% 98%);
+  --destructive: hsl(0 62.8% 50.6%);
+  --destructive-foreground: hsl(210 20% 98%);
+  --border: hsl(215 27.9% 20%);
+  --input: hsl(215 27.9% 20%);
+  --ring: hsl(217.2 91.2% 59.8%);
+  --chart-1: hsl(221.2 83.2% 53.3%);
+  --chart-2: hsl(238.7 83.5% 66.7%);
+  --chart-3: hsl(199.4 95.5% 53.9%);
+  --chart-4: hsl(243.4 75.4% 58.6%);
+  --chart-5: hsl(215.4 16.3% 46.9%);
+  --sidebar: hsl(224 71.4% 4.1%);
+  --sidebar-foreground: hsl(210 20% 98%);
+  --sidebar-primary: hsl(217.2 91.2% 59.8%);
+  --sidebar-primary-foreground: hsl(210 20% 98%);
+  --sidebar-accent: hsl(215 27.9% 16.9%);
+  --sidebar-accent-foreground: hsl(210 20% 98%);
+  --sidebar-border: hsl(215 27.9% 20%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* offset anchor targets below the sticky glass header */
+  scroll-padding-top: 96px;
+}
+
+body {
+  @apply bg-background text-foreground;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: hsl(221.2 83.2% 53.3% / 0.16);
+  color: hsl(224 71.4% 4.1%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+}
+
+/* Custom slim scrollbar for long scrollable lists */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(215.4 16.3% 74%) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(215.4 16.3% 80%);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(215.4 16.3% 65%);
+}
+
+/* Marquee keyframes (fallback / helper for logo tickers) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Soft dotted blueprint grid used behind hero / cta sections */
+.bg-grid-light {
+  background-image: radial-gradient(
+    hsl(215.4 25% 55% / 0.14) 1px,
+    transparent 1px
+  );
+  background-size: 26px 26px;
+}
+
+/* Glassmorphism surface (header, floating cards) */
+.glass-light {
+  background: hsl(0 0% 100% / 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+}
+
+/* ------------------------------------------------------------------ */
+/* liquidGL — "Liquid Glass" lens targets (WebGPU/WebGL refraction)    */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Base surface for every liquidGL lens target. This shows:
+ *   1. before the engine initialises (async import + first frame), and
+ *   2. whenever the WebGPU → WebGL2 → WebGL1 chain bottoms out at the
+ *      library's CSS fallback — so the site never flashes bare content.
+ * Once a GPU pane is live, liquidGL overrides these properties inline on
+ * the target, so this never fights the shader.
+ */
+.liquid-glass-target {
+  background: hsl(0 0% 100% / 0.72);
+  /* -webkit- FIRST, standard LAST — the Tailwind v4 Lightning CSS pipeline
+     dedupes the pair and keeps the last-declared, so the standard property
+     must come last for Firefox + correct computed styles. */
+  -webkit-backdrop-filter: blur(20px) saturate(1.35);
+  backdrop-filter: blur(20px) saturate(1.35);
+}
+
+/* Indigo-dyed variant — static cards that echo the liquidGL tinted lens
+   (e.g. the "Dedicated Pods" engagement card). */
+.liquid-glass-target.tint-indigo {
+  background: hsl(221 83% 60% / 0.1);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  backdrop-filter: blur(22px) saturate(1.5);
+}
+
+/* Reduced motion: the shader is skipped, keep a calmer frosted surface. */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass-target {
+    background: hsl(0 0% 100% / 0.82);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Superdesign theme layer (light adaptation)                          */
+/* ------------------------------------------------------------------ */
+
+/* Global film-grain overlay — fixed, non-interactive, above chrome. */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("/theme/noise.svg");
+}
+
+/* Surrealist floating elements (hero hands) */
+@keyframes float-hand-left {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes float-hand-right {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(20px) rotate(-2deg);
+  }
+}
+
+.animate-float-left {
+  animation: float-hand-left 12s ease-in-out infinite;
+}
+
+.animate-float-right {
+  animation: float-hand-right 14s ease-in-out infinite;
+}
+
+/* Respect reduced-motion: disable ambient floats & marquee */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-left,
+  .animate-float-right,
+  .animate-marquee {
+    animation: none;
+  }
+}
